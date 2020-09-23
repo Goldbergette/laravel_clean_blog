@@ -17,6 +17,14 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
+//VIEW COMPOSERS-------------------------------
+//Route::resource('pages', PagesController::class)->only(['index','show']);
+  View::composer('pages._menu', function($view){
+  $view->with('pages', App\Models\Page::all());
+  });
+
+
+//ROUTE DES PAGES------------------------------
 use App\Http\Controllers\PagesController;
 
 Route::get('/', [PagesController::class,'show'])->name('homepage');
