@@ -20,3 +20,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 
 Route::get('/', [PagesController::class,'show'])->name('homepage');
+
+Route::get('/pages/{page}/{slug}', [PagesController::class,'show'])
+                      ->where(['page'=> '[1-9][0-9]*',
+                               'slug'=>'[a-z0-9][a-z0-9\-]*'])
+                      ->name('pages.show');
