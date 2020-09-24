@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 //VIEW COMPOSERS-------------------------------
-//Route::resource('pages', PagesController::class)->only(['index','show']);
+
   View::composer('pages._menu', function($view){
   $view->with('pages', App\Models\Page::all());
-  });
+});      //Page::orderBy('tri', 'asc')->get() si on voulait avoir le menu par ordre alphabétique
 
 
 //ROUTE DES PAGES------------------------------
@@ -29,7 +29,8 @@ use App\Http\Controllers\PagesController;
 
 Route::get('/', [PagesController::class,'show'])->name('homepage');
 
-Route::get('/pages/{page}/{slug}', [PagesController::class,'show'])
-                      ->where(['page'=> '[1-9][0-9]*',
+//Route::resource('pages', PagesController::class)->only(['index','show']);
+Route::get('/pages/{id}/{slug}', [PagesController::class,'show'])
+                      ->where(['id'=> '[1-9][0-9]*',
                                'slug'=>'[a-z0-9][a-z0-9\-]*'])
                       ->name('pages.show');
