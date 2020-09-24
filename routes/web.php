@@ -24,6 +24,12 @@ use Illuminate\Support\Facades\Route;
 });      //Page::orderBy('tri', 'asc')->get() si on voulait avoir le menu par ordre alphabétique
 
 
+  View::composer('posts._index', function($view){
+    $view->with('posts', App\Models\Post::orderBy('datePublication', 'desc')
+                                          ->take(10)
+                                          ->get());
+  });
+
 //ROUTE DES PAGES------------------------------
 use App\Http\Controllers\PagesController;
 

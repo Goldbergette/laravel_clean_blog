@@ -27,6 +27,14 @@
           {!! html_entity_decode($page->texte) !!}
         </div>
 <!--ici viennent les contenus complémentaires-->
+@if($page->id===1)
+  {{--on va charger la vue index des posts--}}
+  {{-- En lui balancant la liste des 10 derniers posts--}}
+  @include('posts._index')
+@elseif ($page->id===3)
+  @include('template.partials._contact_form')
+@endif
+
     </div>
   </div>
 @endsection
