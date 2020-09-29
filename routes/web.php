@@ -40,3 +40,10 @@ Route::get('/pages/{id}/{slug}', [PagesController::class,'show'])
                       ->where(['id'=> '[1-9][0-9]*',
                                'slug'=>'[a-z0-9][a-z0-9\-]*'])
                       ->name('pages.show');
+
+//ROUTE DU DETAIL D'UN POST------------------------
+use App\Http\Controllers\PostsController;
+Route::get('/posts/{post}/{slug}', [PostsController::class, 'show'])
+                      ->where(['post'=> '[1-9][0-9]*',
+                              'slug'=>'[a-z0-9][a-z0-9\-]*'])
+                      ->name('posts.show');
