@@ -10,7 +10,13 @@
             <h1>{{ $post->titre }}</h1>
             <h2 class="subheading">{{ $post->sousTitre }}</h2>
             <span class="meta">{{ $post->datePublication }} by {{ $post->author->firstname}}</span>
+          <ul>
+            @foreach($post->tags as $tag)
+              <li>{{ $tag->nom }}</li>
+            @endforeach
+          </ul>
           </div>
+
         </div>
       </div>
     </div>
@@ -32,7 +38,7 @@
         <hr>
         <h3>post du même auteur</h3>
         <ul>
-        
+
           @foreach ($post->author->posts as $postAuthor)
             @if($postAuthor->id !== $post->id)
           <li>
@@ -41,6 +47,8 @@
         @endif
         @endforeach
         </ul>
+
+
       </div>
 
     </div>
