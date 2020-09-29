@@ -8,7 +8,7 @@
       {{ $post->sousTitre }}
     </h3>
   </a>
-  <p class="post-meta">{{ $post->datePublication }}</p>
+  <p class="post-meta">{{ $post->datePublication }} by {{ $post->author->firstname }} {{ $post->author->lastname }}</p>
 </div>
 <hr>
 @endforeach
